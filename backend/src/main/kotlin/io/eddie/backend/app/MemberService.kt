@@ -23,4 +23,21 @@ class MemberService(
         return desc
     }
 
+    @Transactional(readOnly = true)
+    fun findByEmail(email: String): Member {
+        return repository.findByEmail(email) ?: throw NoSuchElementException("해당 회원은 존재하지 않습니다.")
+    }
+
+    @Transactional(readOnly = true)
+    fun getDescByEmail(email: String): MemberDescription {
+        val find = findByEmail(email)
+        return MemberDescription(
+            name = find.name,
+            email = find.email,
+            role = find.role,
+        )
+    }
+
+
+
 }
