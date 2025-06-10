@@ -15,7 +15,15 @@ export default function MemberManagement() {
     const [editingMember, setEditingMember] = useState<Member | null>(null)
 
     useEffect(() => {
-
+        const loadMembers = async () => {
+            try {
+                const data = await memberService.getAllMembers();
+                setMembers(data)
+            } catch ( error ) {
+                console.log("오류가 발생했습니다.")
+            }
+        }
+        loadMembers()
     }, [])
 
 

@@ -1,3 +1,14 @@
+export type Member = {
+    name: string,
+    email: string,
+    role: string
+}
+
+export type MemberFormData = {
+    name: string,
+    email: string,
+    role: string
+}
 
 export const Roles = [
     { value: "BRONZE", label: "브론즈", color: "bg-amber-700" },
