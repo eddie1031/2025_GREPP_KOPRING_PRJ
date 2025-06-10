@@ -1,5 +1,6 @@
 package io.eddie.backend.domain
 
+import io.eddie.backend.dto.MemberUpdateDescription
 import io.eddie.backend.dto.Role
 import io.eddie.backend.global.TimeStamp
 import jakarta.persistence.Entity
@@ -25,6 +26,13 @@ class Member(
     var role: Role,
 
 ) : TimeStamp() {
+
+    fun update(desc: MemberUpdateDescription) {
+
+        this.name = desc.name
+        this.role = desc.role
+
+    }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
